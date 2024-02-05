@@ -9,7 +9,8 @@ const port = 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const productManagerInstance = new ProductManager('./productManager.js');
+const absoluteFilePath = path.join(currentDirectory, 'productos.json');
+const productManagerInstance = new ProductManager(absoluteFilePath);
 
 app.get('/products', (req, res) => {
   const { limit } = req.query;
